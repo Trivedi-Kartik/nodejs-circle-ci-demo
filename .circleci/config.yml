@@ -1,19 +1,29 @@
 version: 2.1
 jobs:
   first_job:
-    docker:
-      - image: kt2505/second-image:latest
+    resource_class: kt2505/second-image:latest
     steps:
       - checkout
       - run:
           name: install library
           command: npm install
       - run:
-          name: run project
-          command: npm run start
+          name: Build Image
+          command: |
+          yarn build-image
+      - run:
+          name: Deploy Image to Registry
+          command: |
+          yarn deploy-image
 
 workflows:
   version: 2
   run_project:
+    when:
+      and:
+        equal: true
     jobs:
       - first_job
+      filter: 
+        branches:
+          only: master
