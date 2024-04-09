@@ -1,6 +1,8 @@
 version: 2.1
 jobs:
   first_job:
+    docker:
+      - image: circleci/node:21
     steps:
       - checkout
       - run:
