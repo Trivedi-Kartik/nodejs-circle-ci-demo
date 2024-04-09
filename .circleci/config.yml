@@ -1,8 +1,6 @@
 version: 2.1
 jobs:
   first_job:
-    docker:
-      - image: kt2505/second-image:latest
     steps:
       - checkout
       - run:
@@ -11,11 +9,11 @@ jobs:
       - run:
           name: Build Image
           command: |
-            yarn build-image
+            npm docker build -t kt2505/third-image:latest .
       - run:
           name: Deploy Image to Registry
           command: |
-            yarn deploy-image
+            npm docker push kt2505/third-image:latest
 
 workflows:
   version: 2
