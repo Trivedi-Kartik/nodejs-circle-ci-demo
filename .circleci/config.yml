@@ -1,7 +1,8 @@
 version: 2.1
 jobs:
   first_job:
-    resource_class: kt2505/second-image:latest
+    docker:
+      - image: kt2505/second-image:latest
     steps:
       - checkout
       - run:
@@ -10,11 +11,11 @@ jobs:
       - run:
           name: Build Image
           command: |
-          yarn build-image
+            yarn build-image
       - run:
           name: Deploy Image to Registry
           command: |
-          yarn deploy-image
+            yarn deploy-image
 
 workflows:
   version: 2
@@ -24,6 +25,6 @@ workflows:
         equal: true
     jobs:
       - first_job
-      filter: 
-        branches:
-          only: master
+    filter: 
+      branches:
+        only: master
