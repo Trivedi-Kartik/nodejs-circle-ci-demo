@@ -22,6 +22,3 @@ workflows:
   run_project:
     jobs:
       - first_job
-    filter: 
-      branches:
-        only: master
