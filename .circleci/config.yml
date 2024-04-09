@@ -1,21 +1,21 @@
 version: 2.1
 jobs:
   first_job:
-    dokcer:
+    docker:
       - image: kt2505/second-image:latest
     steps:
       - checkout
       - run:
-        name: install library
-        command: npm install
+          name: install library
+          command: npm install
   second_job:
     docker: 
       - image: kt2505/second-image:latest
     steps:
       - checkout
       - run:
-        name: run project
-        command: npm run start
+          name: run project
+          command: npm run start
 
 workflows:
   version: 2
