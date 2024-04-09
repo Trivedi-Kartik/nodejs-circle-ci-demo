@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   first_job:
     docker:
-      - image: circleci/node:21
+      - image: kt2505/node
     steps:
       - checkout
       - run:
