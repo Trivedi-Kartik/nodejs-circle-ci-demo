@@ -9,11 +9,11 @@ jobs:
       - run:
           name: Build Image
           command: |
-            npm docker build -t kt2505/third-image:latest .
+            docker build -t kt2505/third-image:latest .
       - run:
           name: Deploy Image to Registry
           command: |
-            npm docker push kt2505/third-image:latest
+            docker push kt2505/third-image:latest
 
 workflows:
   version: 2
